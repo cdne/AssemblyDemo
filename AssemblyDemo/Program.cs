@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace AssemblyDemo
 {
@@ -6,7 +7,17 @@ namespace AssemblyDemo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+        }
+
+        public static void ShowAssembly(Assembly assembly)
+        {
+            Console.WriteLine($"Fullname: {assembly.FullName}, Location: {assembly.Location}, Cache: {assembly.GlobalAssemblyCache}, " +
+                $"ImageRunTimeVersion: {assembly.ImageRuntimeVersion}");
+
+            foreach (var item in assembly.Modules)
+            {
+                Console.WriteLine($"{item.Name}");
+            }
         }
     }
 }
